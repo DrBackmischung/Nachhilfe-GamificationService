@@ -1,0 +1,42 @@
+server:
+  port: 6003
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/gameservice?useSSL=false
+    username: root
+    password:  
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+    cors-enabled: true
+    cors:
+      allowed-origins: http://some.domain.com
+      allowed-methods: GET, HEAD, POST
+  graphiql:
+    mapping: /graphiql
+    endpoint:
+      graphql: /graphql
+      subscriptions: /subscriptions
+    subscriptions:
+      timeout: 30
+      reconnect: false
+    basePath: /
+    enabled: true
+    pageTitle: GraphiQL
+    cdn:
+      enabled: false
+      version: latest
+    props:
+      resources:
+        query: query.graphql
+        defaultQuery: defaultQuery.graphql
+        variables: variables.json
+      variables:
+        editorTheme: "solarized light"
+    headers:
+      Authorization: "Bearer <your-token>"

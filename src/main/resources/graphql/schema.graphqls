@@ -1,0 +1,10 @@
+type Query {
+    stats: [Stats]
+}
+
+type Stats {
+    id: String!
+    userId: String!
+    registerDate: String!
+    learningPoints: Int!
+}
