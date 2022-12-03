@@ -1,2 +1,2 @@
 # Nachhilfe-GamificationService
-SE III: GamificationService mit ?
+SE III: GamificationService mit Kotlin und GraphQL
