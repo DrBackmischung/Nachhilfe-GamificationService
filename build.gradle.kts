@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-	implementation("javax:javaee-api:8.0")
+	implementation("jakarta.platform:jakarta.jakartaee-web-api:9.0.0")
 
     implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
     implementation("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
@@ -37,6 +37,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	implementation("org.hibernate:hibernate-core:6.1.5.Final")
+	implementation("org.hibernate.validator:hibernate-validator:7.0.5.Final")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
