@@ -3,10 +3,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://admin:admin@stats.hzu6lka.mongodb.net/
-      database: gameficationservice
-      username: admin
-      password: admin
+      uri: mongodb+srv://admin:admin@stats.hzu6lka.mongodb.net/gameficationservice
 graphql:
   servlet:
     enabled: true

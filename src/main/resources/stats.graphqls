@@ -1,6 +1,6 @@
 type Query {
     stats: [Stats]
-    stat: Stats
+    stat(id: String!): Stats
     statByUser(userId: String!): Stats
 }
 

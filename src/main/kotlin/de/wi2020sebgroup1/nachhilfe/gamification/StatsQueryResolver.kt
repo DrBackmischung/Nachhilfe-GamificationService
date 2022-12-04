@@ -10,20 +10,18 @@ import de.wi2020sebgroup1.nachhilfe.gamification.StatsRepository
 import java.util.*
 
 @Component
-class StatsResolver(val statsRepository: StatsRepository, private val mongoOperations: MongoOperations) : GraphQLQueryResolver {
+class StatsQueryResolver(val statsRepository: StatsRepository, private val mongoOperations: MongoOperations) : GraphQLQueryResolver {
 
-    fun stats(): List<Stats> {
+    public fun stats(): List<Stats> {
         return statsRepository.findAll()
     }
-    fun stat(id: String): Stats {
+
+    public fun stat(id: String): Stats {
         return statsRepository.findById(id).get()
     }
-    fun statByUser(userId: String): Stats {
+
+    public fun statByUser(userId: String): Stats {
         return statsRepository.findByUserId(userId).get(0)
     }
-    fun add(userId: String, registerDate: String, learningPoints: Int): Stats {
-        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints)
-        statsRepository.save(newStats)
-        return newStats
-    }
+
 }
