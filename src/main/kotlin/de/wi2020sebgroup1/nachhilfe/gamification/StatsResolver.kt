@@ -1,22 +1,29 @@
 package de.wi2020sebgroup1.nachhilfe.gamification
 
-import org.springframework.stereotype.Component
-import org.springframework.beans.factory.annotation.Autowired
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
+import org.springframework.data.mongodb.core.MongoOperations
+import org.springframework.data.mongodb.core.query.Criteria
+import org.springframework.data.mongodb.core.query.Query
+import org.springframework.stereotype.Component
 import de.wi2020sebgroup1.nachhilfe.gamification.Stats
 import de.wi2020sebgroup1.nachhilfe.gamification.StatsRepository
+import java.util.*
 
 @Component
-class StatsResolver() : GraphQLQueryResolver {
+class StatsResolver(val statsRepository: StatsRepository, private val mongoOperations: MongoOperations) : GraphQLQueryResolver {
 
-    @Autowired
-    lateinit var repo: StatsRepository
-
-    fun stats() = repo.findAll()
-    fun stat(id: String) = repo.findByid(id)
-    fun statByUser(userId: String) = repo.findByuserId(userId)
-    fun add(stats: Stats): Stats {
-        repo.save(stats)
-        return stats
+    fun stats(): List<Stats> {
+        return statsRepository.findAll()
+    }
+    fun stat(id: String): Stats {
+        return statsRepository.findById(id).get()
+    }
+    fun statByUser(userId: String): Stats {
+        return statsRepository.findByUserId(userId).get(0)
+    }
+    fun add(userId: String, registerDate: String, learningPoints: Int): Stats {
+        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints)
+        statsRepository.save(newStats)
+        return newStats
     }
 }

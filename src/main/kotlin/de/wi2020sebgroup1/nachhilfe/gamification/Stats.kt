@@ -1,19 +1,15 @@
 package de.wi2020sebgroup1.nachhilfe.gamification
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
-@Table(name="stats")
-class Stats( 
+@Document(collection = "stats")
+data class Stats( 
 
+    @Id
+    val id: String,
     val userId: String, 
     val registerDate: String,
-    val learningPoints: Int,
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String
+    val learningPoints: Int
 
 )

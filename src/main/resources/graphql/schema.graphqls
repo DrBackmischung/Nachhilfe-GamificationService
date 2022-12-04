@@ -1,10 +1,16 @@
 type Query {
     stats: [Stats]
+    stat: Stats
+    statByUser(userId: String!): Stats
 }
 
 type Stats {
-    id: String!
+    id: String
     userId: String!
     registerDate: String!
     learningPoints: Int!
+}
+
+type Mutation {
+    add(userId: String!, registerDate: String!, learningPoints: Int!): Stats!
 }
