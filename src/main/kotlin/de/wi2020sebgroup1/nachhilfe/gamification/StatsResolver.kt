@@ -10,13 +10,13 @@ import de.wi2020sebgroup1.nachhilfe.gamification.StatsRepository
 class StatsResolver() : GraphQLQueryResolver {
 
     @Autowired
-    lateinit var statsRepository: StatsRepository
+    lateinit var repo: StatsRepository
 
-    fun stats() = statsRepository.findAll()
-    fun stat(id: String) = statsRepository.findByid(id)
-    fun statByUser(userId: String) = statsRepository.findByuserId(userId)
+    fun stats() = repo.findAll()
+    fun stat(id: String) = repo.findByid(id)
+    fun statByUser(userId: String) = repo.findByuserId(userId)
     fun add(stats: Stats): Stats {
-        statsRepository.save(stats)
+        repo.save(stats)
         return stats
     }
 }
