@@ -10,6 +10,8 @@ data class Stats(
     val id: String,
     val userId: String, 
     val registerDate: String,
-    val learningPoints: Int
+    val learningPoints: Int,
+    val teachingPoints: Int,
+    val profilePoints: Int
 
 )

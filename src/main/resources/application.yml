@@ -3,7 +3,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://admin:admin@stats.hzu6lka.mongodb.net/gameficationservice
+      uri: mongodb+srv://admin:admin@stats.hzu6lka.mongodb.net/gamificationservice
 graphql:
   servlet:
     enabled: true

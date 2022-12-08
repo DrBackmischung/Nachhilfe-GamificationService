@@ -12,8 +12,8 @@ import java.util.*
 @Component
 class StatsMutationResolver(val statsRepository: StatsRepository, private val mongoOperations: MongoOperations) : GraphQLMutationResolver {
 
-    public fun add(userId: String, registerDate: String, learningPoints: Int): Stats {
-        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints)
+    public fun add(userId: String, registerDate: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int): Stats {
+        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints, teachingPoints, profilePoints)
         statsRepository.save(newStats)
         return newStats
     }
