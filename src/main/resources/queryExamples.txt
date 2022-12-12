@@ -1,0 +1,32 @@
+query{
+  stats {
+    id,
+    userId,
+    registerDate,
+    learningPoints,
+    teachingPoints,
+    profilePoints
+  }
+}
+
+mutation {
+  add(userId: "002", registerDate: "12122022", learningPoints: 0, teachingPoints: 0, profilePoints: 0) {
+    id,
+    userId,
+    registerDate,
+    learningPoints,
+    teachingPoints,
+    profilePoints
+  }
+}
+
+mutation {
+  update(id: "d37e1a23-ffa1-4637-a7a4-c1bf68b81376", learningPoints: 0, teachingPoints: 40, profilePoints: 20) {
+    id,
+    userId,
+    registerDate,
+    learningPoints,
+    teachingPoints,
+    profilePoints
+  }
+}

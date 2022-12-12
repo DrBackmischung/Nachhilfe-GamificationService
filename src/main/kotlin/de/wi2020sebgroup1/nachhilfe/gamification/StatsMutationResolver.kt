@@ -18,4 +18,29 @@ class StatsMutationResolver(val statsRepository: StatsRepository, private val mo
         return newStats
     }
 
+    public fun update(id: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int): Stats {
+        var toUpdate = statsRepository.findById(id).get()
+        var lp: Int = 0
+        var tp: Int = 0
+        var pp: Int = 0
+        if(learningPoints != 0) {
+            lp = learningPoints
+        } else {
+            lp = toUpdate.learningPoints
+        }
+        if(teachingPoints != 0) {
+            tp = teachingPoints
+        } else {
+            tp = toUpdate.teachingPoints
+        }
+        if(profilePoints != 0) {
+            pp = profilePoints
+        } else {
+            pp = toUpdate.profilePoints
+        }
+        val newStats = Stats(toUpdate.id, toUpdate.userId, toUpdate.registerDate, lp, tp, pp)
+        statsRepository.save(newStats)
+        return newStats
+    }
+
 }
