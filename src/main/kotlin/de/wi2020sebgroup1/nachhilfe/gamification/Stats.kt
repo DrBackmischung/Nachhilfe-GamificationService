@@ -12,6 +12,9 @@ data class Stats(
     val registerDate: String,
     val learningPoints: Int,
     val teachingPoints: Int,
-    val profilePoints: Int
+    val profilePoints: Int,
+    val mc1: Int,
+    val mc2: Int,
+    val mc3: Int
 
 )

@@ -12,17 +12,20 @@ import java.util.*
 @Component
 class StatsMutationResolver(val statsRepository: StatsRepository, private val mongoOperations: MongoOperations) : GraphQLMutationResolver {
 
-    public fun add(userId: String, registerDate: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int): Stats {
-        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints, teachingPoints, profilePoints)
+    public fun add(userId: String, registerDate: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats {
+        val newStats = Stats(UUID.randomUUID().toString(), userId, registerDate, learningPoints, teachingPoints, profilePoints, mc1, mc2, mc3)
         statsRepository.save(newStats)
         return newStats
     }
 
-    public fun update(id: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int): Stats {
+    public fun update(id: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats {
         var toUpdate = statsRepository.findById(id).get()
         var lp: Int = 0
         var tp: Int = 0
         var pp: Int = 0
+        var m1: Int = 0
+        var m2: Int = 0
+        var m3: Int = 0
         if(learningPoints != 0) {
             lp = learningPoints
         } else {
@@ -38,7 +41,22 @@ class StatsMutationResolver(val statsRepository: StatsRepository, private val mo
         } else {
             pp = toUpdate.profilePoints
         }
-        val newStats = Stats(toUpdate.id, toUpdate.userId, toUpdate.registerDate, lp, tp, pp)
+        if(mc1 != 0) {
+            m1 = mc1
+        } else {
+            m1 = toUpdate.mc1
+        }
+        if(mc2 != 0) {
+            m2 = mc2
+        } else {
+            m2 = toUpdate.mc2
+        }
+        if(mc3 != 0) {
+            m3 = mc3
+        } else {
+            m3 = toUpdate.mc3
+        }
+        val newStats = Stats(toUpdate.id, toUpdate.userId, toUpdate.registerDate, lp, tp, pp, m1, m2, m3)
         statsRepository.save(newStats)
         return newStats
     }

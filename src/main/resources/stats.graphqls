@@ -11,9 +11,12 @@ type Stats {
     learningPoints: Int!
     teachingPoints: Int!
     profilePoints: Int!
+    mc1: Int!
+    mc2: Int!
+    mc3: Int!
 }
 
 type Mutation {
-    add(userId: String!, registerDate: String!, learningPoints: Int!, teachingPoints: Int!, profilePoints: Int!): Stats!
-    update(id: String!, learningPoints: Int, teachingPoints: Int, profilePoints: Int): Stats!
+    add(userId: String!, registerDate: String!, learningPoints: Int!, teachingPoints: Int!, profilePoints: Int!, mc1: Int, mc2: Int, mc3: Int): Stats!
+    update(id: String!, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats!
 }
