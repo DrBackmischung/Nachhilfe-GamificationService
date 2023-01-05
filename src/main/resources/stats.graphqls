@@ -18,5 +18,5 @@ type Stats {
 
 type Mutation {
     add(userId: String!, registerDate: String!, learningPoints: Int!, teachingPoints: Int!, profilePoints: Int!, mc1: Int, mc2: Int, mc3: Int): Stats!
-    update(id: String!, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats!
+    update(userId: String!, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats!
 }
