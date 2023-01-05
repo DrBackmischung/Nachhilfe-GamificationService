@@ -19,7 +19,7 @@ class StatsMutationResolver(val statsRepository: StatsRepository, private val mo
     }
 
     public fun update(userId: String, learningPoints: Int, teachingPoints: Int, profilePoints: Int, mc1: Int, mc2: Int, mc3: Int): Stats {
-        var toUpdate = statsRepository.findByUserId(userId).get()
+        var toUpdate = statsRepository.findByUserId(userId).get(0)
         var lp: Int = 0
         var tp: Int = 0
         var pp: Int = 0
